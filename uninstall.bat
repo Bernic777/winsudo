@@ -13,20 +13,20 @@ if %errorLevel% neq 0 (
     exit /b 1
 )
 
-echo [1/2] Removing winsudo.exe from System32...
-del /f /q "C:\Windows\System32\winsudo.exe" >nul 2>&1
-if exist "C:\Windows\System32\winsudo.exe" (
-    echo [-] Gagal menghapus winsudo.exe
+echo [1/2] Removing wsudo.exe from System32...
+del /f /q "C:\Windows\System32\wsudo.exe" >nul 2>&1
+if exist "C:\Windows\System32\wsudo.exe" (
+    echo [-] Gagal menghapus wsudo.exe
 ) else (
-    echo [+] winsudo.exe berhasil dihapus
+    echo [+] wsudo.exe berhasil dihapus
 )
 
-echo [2/2] Removing sudo.bat wrapper...
-del /f /q "C:\Windows\System32\sudo.bat" >nul 2>&1
-if exist "C:\Windows\System32\sudo.bat" (
-    echo [-] Gagal menghapus sudo.bat
+echo [2/2] Removing wsudo.bat wrapper...
+del /f /q "C:\Windows\System32\wsudo.bat" >nul 2>&1
+if exist "C:\Windows\System32\wsudo.bat" (
+    echo [-] Gagal menghapus wsudo.bat
 ) else (
-    echo [+] sudo.bat berhasil dihapus
+    echo [+] wsudo.bat berhasil dihapus
 )
 
 echo.

@@ -16,24 +16,24 @@ import (
 	"golang.org/x/sys/windows"
 )
 
-const VERSION = "1.0.0"
+const VERSION = "1.2.0"
 
-var usage = `WinSudo v1.0.0 - sudo for Windows
+var usage = `WinSudo v1.2.0 - wsudo for Windows
 
 Usage:
-  sudo <command> [args...]    Run command as administrator
-  sudo -u <user> <command>    Run as specific user
-  sudo --clear-cache          Clear cached credentials
-  sudo --list-cache           List cached users
-  sudo --version              Show version
-  sudo --help                 Show this help
+  wsudo <command> [args...]    Run command as administrator
+  wsudo -u <user> <command>    Run as specific user
+  wsudo --clear-cache          Clear cached credentials
+  wsudo --list-cache           List cached users
+  wsudo --version              Show version
+  wsudo --help                 Show this help
 
 Examples:
-  sudo cmd                    Open elevated command prompt
-  sudo powershell             Open elevated PowerShell
-  sudo notepad.exe            Run Notepad as admin
-  sudo net user admin123 /add Create new user
-  sudo "dir C:\Windows"       Run directory listing elevated
+  wsudo cmd                    Open elevated command prompt
+  wsudo powershell             Open elevated PowerShell
+  wsudo notepad.exe            Run Notepad as admin
+  wsudo net user admin123 /add Create new user
+  wsudo "dir C:\Windows"       Run directory listing elevated
 
 Config: config/winsudo.json
 Logs:   logs/audit.log`
@@ -41,8 +41,8 @@ Logs:   logs/audit.log`
 func printBanner() {
 	banner := `
 ╔══════════════════════════════════════════════╗
-║        WinSudo v%s - sudo for Windows        ║
-║        Run commands with elevation           ║
+║      WinSudo v%s - wsudo for Windows       ║
+║      Run commands with elevation            ║
 ╚══════════════════════════════════════════════╝`
 	fmt.Printf(banner+"\n", VERSION)
 }

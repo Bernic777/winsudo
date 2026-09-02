@@ -13,20 +13,20 @@ if %errorLevel% neq 0 (
     exit /b 1
 )
 
-echo [1/2] Copying sudo.exe to System32...
-copy /Y "%~dp0sudo.exe" "C:\Windows\System32\winsudo.exe" >nul
+echo [1/2] Copying wsudo.exe to System32...
+copy /Y "%~dp0wsudo.exe" "C:\Windows\System32\wsudo.exe" >nul
 if %errorLevel% equ 0 (
-    echo [+] sudo.exe berhasil diinstall ke System32
+    echo [+] wsudo.exe berhasil diinstall ke System32
 ) else (
     echo [-] Gagal copy ke System32
     pause
     exit /b 1
 )
 
-echo [2/2] Creating sudo.bat wrapper...
-echo @echo off > "C:\Windows\System32\sudo.bat"
-echo winsudo.exe %%* >> "C:\Windows\System32\sudo.bat"
-echo [+] sudo.bat wrapper dibuat
+echo [2/2] Creating wsudo.bat wrapper...
+echo @echo off > "C:\Windows\System32\wsudo.bat"
+echo wsudo.exe %%* >> "C:\Windows\System32\wsudo.bat"
+echo [+] wsudo.bat wrapper dibuat
 
 echo.
 echo ========================================
