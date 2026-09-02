@@ -2,10 +2,10 @@
 
 **sudo for Windows** - Run commands with administrator privileges
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/yourusername/winsudo)](https://goreportcard.com/report/github.com/yourusername/winsudo)
+[![Go Report Card](https://goreportcard.com/badge/github.com/Bernic777/winsudo)](https://goreportcard.com/report/github.com/Bernic777/winsudo)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Go Version](https://img.shields.io/github/go-mod/go-version/yourusername/winsudo)](https://go.dev/)
-[![Release](https://img.shields.io/github/v/release/yourusername/winsudo)](https://github.com/yourusername/winsudo/releases)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/Bernic777/winsudo)](https://go.dev/)
+[![Release](https://img.shields.io/github/v/release/Bernic777/winsudo)](https://github.com/Bernic777/winsudo/releases)
 
 ## Features
 
@@ -26,7 +26,7 @@ Download the latest `winsudo.exe` from [Releases](https://github.com/yourusernam
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/winsudo.git
+git clone https://github.com/Bernic777/winsudo.git
 cd winsudo
 
 # Build

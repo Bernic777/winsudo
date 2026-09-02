@@ -22,7 +22,7 @@ Thank you for your interest in contributing to WinSudo! This document provides g
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/winsudo.git
+git clone https://github.com/Bernic777/winsudo.git
 cd winsudo
 
 # Build
