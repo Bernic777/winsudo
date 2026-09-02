@@ -5,7 +5,7 @@
 
 # 🛡️ WinSudo
 
-### sudo for Windows
+### wsudo for Windows
 
 **Jalankan perintah dengan hak akses administrator secara aman dan terdokumentasi.**
 
@@ -28,6 +28,38 @@ WinSudo adalah utilitas command-line untuk Windows yang terinspirasi dari `sudo`
 
 ---
 
+## ⚠️ wsudo vs Windows Built-in Sudo
+
+> **Perhatian:** Windows 11 (build 2411+) sudah memiliki fitur `sudo` bawaan yang bisa diaktifkan.
+
+### Windows 11 Built-in Sudo
+
+Jika Anda menggunakan **Windows 11 atau lebih baru**, Anda bisa mengaktifkan sudo bawaan:
+
+```powershell
+# Jalankan Command Prompt sebagai Administrator
+sudo config --enable normal
+```
+
+Setelah diaktifkan, Anda bisa langsung menggunakan:
+```powershell
+sudo cmd
+```
+
+### Kapan menggunakan wsudo?
+
+| Kondisi | Rekomendasi |
+|---------|-------------|
+| Windows 11 build 2411+ | Gunakan built-in `sudo` atau `wsudo` |
+| Windows 10 / Windows 11 lama | Gunakan `wsudo` |
+| Butuh audit logging | Gunakan `wsudo` |
+| Butuh whitelist/blacklist command | Gunakan `wsudo` |
+| Butuh credential caching | Gunakan `wsudo` |
+
+**wsudo** adalah alternatif untuk yang belum bisa menggunakan Windows built-in sudo, atau yang membutuhkan fitur tambahan seperti pencatatan log dan kebijakan perintah.
+
+---
+
 ## ✨ Fitur
 
 | Fitur | Deskripsi |
@@ -37,20 +69,34 @@ WinSudo adalah utilitas command-line untuk Windows yang terinspirasi dari `sudo`
 | 📝 **Pencatatan Log** | Mencatat setiap perintah yang dijalankan |
 | ⚡ **Cache Kredensial** | Menyimpan password sementara (5 menit) |
 | 🔒 **Kebijakan Perintah** | Whitelist/blacklist perintah tertentu |
-| 👤 **Kontrol Pengguna** | Batasi siapa yang boleh menggunakan sudo |
+| 👤 **Kontrol Pengguna** | Batasi siapa yang boleh menggunakan wsudo |
 
 ---
 
 ## 📦 Instalasi
 
-### Opsi 1: Download Binary (Disarankan)
+### Windows 11 (Built-in Sudo)
+
+Jika Anda menggunakan Windows 11 build 2411 atau lebih baru:
+
+```powershell
+# Jalankan Command Prompt sebagai Administrator
+sudo config --enable normal
+```
+
+Selesai! Sekarang Anda bisa menggunakan `sudo` langsung.
+
+### wsudo (Alternatif)
+
+#### Opsi 1: Installer (Disarankan)
 
 1. Kunjungi halaman [Releases](https://github.com/Bernic777/winsudo/releases)
-2. Download `winsudo.zip`
-3. Ekstrak ke folder yang diinginkan
-4. Jalankan `sudo.exe` dari command prompt
+2. Download `wsudowin.zip`
+3. Ekstrak semua file
+4. Klik kanan `install.bat` - Run as administrator
+5. Selesai! Sekarang bisa jalankan `wsudo` dari mana saja
 
-### Opsi 2: Build dari Source
+#### Opsi 2: Build dari Source
 
 ```powershell
 # Clone repository
@@ -58,13 +104,13 @@ git clone https://github.com/Bernic777/winsudo.git
 cd winsudo
 
 # Build
-go build -o sudo.exe .
+go build -o wsudo.exe .
 
 # Tambahkan ke PATH (opsional)
 $env:PATH += ";$(Get-Location)"
 ```
 
-### Opsi 3: Install dengan Go
+#### Opsi 3: Install dengan Go
 
 ```powershell
 go install github.com/Bernic777/winsudo@latest
@@ -74,7 +120,7 @@ go install github.com/Bernic777/winsudo@latest
 
 | Komponen | Versi Minimum |
 |----------|---------------|
-| Go | 1.21 atau lebih baru |
+| Go | 1.21 atau lebih baru (jika build dari source) |
 | Windows | 10 / 11 |
 | Arsitektur | amd64 |
 
@@ -86,44 +132,44 @@ go install github.com/Bernic777/winsudo@latest
 
 ```powershell
 # Buka command prompt dengan hak admin
-sudo cmd
+wsudo cmd
 
 # Buka PowerShell dengan hak admin
-sudo powershell
+wsudo powershell
 
 # Jalankan program sebagai admin
-sudo notepad.exe
-sudo explorer.exe
+wsudo notepad.exe
+wsudo explorer.exe
 ```
 
 ### Jalankan Perintah Tertentu
 
 ```powershell
 # Buat user baru
-sudo net user admin123 /add
+wsudo net user admin123 /add
 
 # Lihat isi direktori
-sudo dir C:\Windows
+wsudo dir C:\Windows
 
 # Jalankan dengan argument
-sudo tasklist /svc
+wsudo tasklist /svc
 ```
 
 ### Perintah Utilitas
 
 ```powershell
 # Tampilkan versi
-sudo --version
+wsudo --version
 
 # Tampilkan bantuan
-sudo --help
+wsudo --help
 
 # Cek status admin
-sudo --admin
+wsudo --admin
 
 # Kelola cache kredensial
-sudo --clear-cache
-sudo --list-cache
+wsudo --clear-cache
+wsudo --list-cache
 ```
 
 ---
@@ -160,7 +206,7 @@ Edit file `config/winsudo.json` untuk menyesuaikan perilaku:
 | `auth` | `timeout_seconds` | Durasi cache kredensial | `300` |
 | | `max_attempts` | Maksimal percobaan password | `3` |
 | | `require_password` | Aktifkan autentikasi | `true` |
-| `allowed_users` | - | Pengguna yang boleh menggunakan sudo | `[]` (semua) |
+| `allowed_users` | - | Pengguna yang boleh menggunakan wsudo | `[]` (semua) |
 | `allowed_commands` | - | Perintah yang diizinkan | `[]` (semua) |
 | `blocked_commands` | - | Perintah yang diblokir | `[]` |
 | `audit` | `enabled` | Aktifkan pencatatan log | `true` |
@@ -185,6 +231,8 @@ winsudo/
 │   │   └── executor.go        # Pembuatan proses
 │   └── platform/
 │       └── windows.go         # Panggilan API Win32
+├── install.bat                # Installer ke System32
+├── uninstall.bat              # Hapus dari System32
 └── config/
     └── winsudo.json           # Konfigurasi default
 ```
@@ -193,7 +241,7 @@ winsudo/
 
 ## 🔒 Keamanan
 
-- **Eksekusi tanpa admin**: Jalankan sudo dari terminal biasa untuk keamanan optimal
+- **Eksekusi tanpa admin**: Jalankan wsudo dari terminal biasa untuk keamanan optimal
 - **Cache kredensial**: Password disimpan selama 5 menit (dapat dikonfigurasi)
 - **Jejak audit**: Semua perintah dicatat di `logs/audit.log`
 - **Filter perintah**: Blokir perintah berbahaya melalui kebijakan
@@ -214,8 +262,8 @@ cd winsudo
 git checkout -b feature/fitur-menarik
 
 # Buat perubahan dan uji
-go build -o sudo.exe .
-.\sudo.exe --version
+go build -o wsudo.exe .
+.\wsudo.exe --version
 
 # Commit dan push
 git add .
@@ -227,13 +275,18 @@ git push origin feature/fitur-menarik
 
 ## 📋 Changelog
 
+### v1.3.0 (2026-09-02)
+- Binary di-rename ke `wsudo.exe`
+- Command: `wsudo` (menghindari konflik dengan Windows built-in sudo)
+- Menambahkan installer dan uninstaller
+
 ### v1.0.0 (2026-09-02)
-- 🎉 Rilis pertama
-- 🔐 Autentikasi password
-- 🛡️ Elevasi UAC
-- 📝 Pencatatan log
-- ⚡ Cache kredensial
-- 🔒 Kebijakan perintah
+- Rilis pertama
+- Autentikasi password
+- Elevasi UAC
+- Pencatatan log
+- Cache kredensial
+- Kebijakan perintah
 
 ---
 
