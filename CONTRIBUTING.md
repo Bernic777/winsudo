@@ -26,7 +26,7 @@ git clone https://github.com/Bernic777/winsudo.git
 cd winsudo
 
 # Build
-go build -o winsudo.exe .
+go build -o sudo.exe .
 
 # Run tests
 go test ./...

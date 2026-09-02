@@ -1,93 +1,56 @@
 <div align="center">
 
+<img src="https://img.shields.io/badge/Windows-0078D4?style=for-the-badge&logo=windows&logoColor=white" alt="Windows"/>
+<img src="https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white" alt="Go"/>
+
 # 🛡️ WinSudo
 
-### **sudo for Windows**
+### sudo for Windows
 
-**Run any command with administrator privileges — securely, auditable, effortlessly.**
+**Jalankan perintah dengan hak akses administrator secara aman dan terdokumentasi.**
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/Bernic777/winsudo)](https://goreportcard.com/report/github.com/Bernic777/winsudo)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Go Version](https://img.shields.io/badge/Go-1.21+-00ADD8?logo=go&logoColor=white)](https://go.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](https://opensource.org/licenses/MIT)
+[![Go Version](https://img.shields.io/badge/Go-1.21+-00ADD8?logo=go)](https://go.dev/)
 [![Release](https://img.shields.io/github/v/release/Bernic777/winsudo?color=green&logo=github)](https://github.com/Bernic777/winsudo/releases)
-[![Platform](https://img.shields.io/badge/Platform-Windows-0078D4?logo=windows&logoColor=white)](https://github.com/Bernic777/winsudo)
-[![Downloads](https://img.shields.io/github/downloads/Bernic777/winsudo/total?color=purple&logo=docusign)](https://github.com/Bernic777/winsudo/releases)
+[![Downloads](https://img.shields.io/github/downloads/Bernic777/winsudo/total?color=purple)](https://github.com/Bernic777/winsudo/releases)
 
 ---
 
-**WinSudo** brings the power of Unix `sudo` to Windows. Execute commands with elevated privileges using a simple, secure, and auditable interface.
-
-[Getting Started](#-quick-start) • [Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Configuration](#%EF%B8%8F-configuration) • [Contributing](#-contributing)
+[features](#-fitur) • [instalasi](#-instalasi) • [penggunaan](#-penggunaan) • [konfigurasi](#%EF%B8%8F-konfigurasi) • [kontribusi](#-kontribusi)
 
 </div>
 
 ---
 
-## ⚡ Quick Start
+## 📖 Tentang
 
-```powershell
-# Download and run
-winsudo cmd
-```
-
-That's it. You now have an elevated command prompt.
+WinSudo adalah utilitas command-line untuk Windows yang terinspirasi dari `sudo` di Unix/Linux. Tool ini memungkinkan Anda menjalankan perintah dengan hak akses administrator menggunakan autentikasi password, pencatatan log, dan konfigurasi keamanan.
 
 ---
 
-## 🎯 Features
+## ✨ Fitur
 
-<table>
-<tr>
-<td>
-
-🔐 **Password Authentication**
-Verify identity before elevation
-
-</td>
-<td>
-
-🛡️ **UAC Integration**
-Windows-native security
-
-</td>
-<td>
-
-📝 **Audit Logging**
-Track every command executed
-
-</td>
-</tr>
-<tr>
-<td>
-
-⚡ **Credential Caching**
-5-minute timeout (configurable)
-
-</td>
-<td>
-
-🔒 **Command Policy**
-Whitelist/blacklist commands
-
-</td>
-<td>
-
-👤 **User Control**
-Authorize specific users only
-
-</td>
-</tr>
-</table>
+| Fitur | Deskripsi |
+|-------|-----------|
+| 🔐 **Autentikasi Password** | Verifikasi identitas sebelum elevasi hak akses |
+| 🛡️ **Integrasi UAC** | Menggunakan mekanisme keamanan bawaan Windows |
+| 📝 **Pencatatan Log** | Mencatat setiap perintah yang dijalankan |
+| ⚡ **Cache Kredensial** | Menyimpan password sementara (5 menit) |
+| 🔒 **Kebijakan Perintah** | Whitelist/blacklist perintah tertentu |
+| 👤 **Kontrol Pengguna** | Batasi siapa yang boleh menggunakan sudo |
 
 ---
 
-## 📦 Installation
+## 📦 Instalasi
 
-### Option 1: Download Binary (Recommended)
+### Opsi 1: Download Binary (Disarankan)
 
-Download the latest `winsudo.exe` from [Releases](https://github.com/Bernic777/winsudo/releases) and place it in your `PATH`.
+1. Kunjungi halaman [Releases](https://github.com/Bernic777/winsudo/releases)
+2. Download `winsudo.zip`
+3. Ekstrak ke folder yang diinginkan
+4. Jalankan `sudo.exe` dari command prompt
 
-### Option 2: Build from Source
+### Opsi 2: Build dari Source
 
 ```powershell
 # Clone repository
@@ -95,79 +58,79 @@ git clone https://github.com/Bernic777/winsudo.git
 cd winsudo
 
 # Build
-go build -o winsudo.exe .
+go build -o sudo.exe .
 
-# Optional: Add to PATH
+# Tambahkan ke PATH (opsional)
 $env:PATH += ";$(Get-Location)"
 ```
 
-### Option 3: Install with Go
+### Opsi 3: Install dengan Go
 
 ```powershell
 go install github.com/Bernic777/winsudo@latest
 ```
 
-### Requirements
+### Persyaratan
 
-| Requirement | Version |
-|-------------|---------|
-| Go | 1.21+ |
-| Windows | 10/11 |
-| Architecture | amd64 |
-
----
-
-## 🚀 Usage
-
-### Basic Commands
-
-```powershell
-# Open elevated command prompt
-winsudo cmd
-
-# Open elevated PowerShell
-winsudo powershell
-
-# Run any executable as admin
-winsudo notepad.exe
-winsudo explorer.exe
-```
-
-### Run Specific Commands
-
-```powershell
-# Create a new user
-winsudo net user admin123 /add
-
-# List directory contents
-winsudo dir C:\Windows
-
-# Run with arguments
-winsudo tasklist /svc
-```
-
-### Utility Commands
-
-```powershell
-# Show version
-winsudo --version
-
-# Show help
-winsudo --help
-
-# Check admin status
-winsudo --admin
-
-# Manage credential cache
-winsudo --clear-cache
-winsudo --list-cache
-```
+| Komponen | Versi Minimum |
+|----------|---------------|
+| Go | 1.21 atau lebih baru |
+| Windows | 10 / 11 |
+| Arsitektur | amd64 |
 
 ---
 
-## ⚙️ Configuration
+## 🚀 Penggunaan
 
-Edit `config/winsudo.json` to customize behavior:
+### Perintah Dasar
+
+```powershell
+# Buka command prompt dengan hak admin
+sudo cmd
+
+# Buka PowerShell dengan hak admin
+sudo powershell
+
+# Jalankan program sebagai admin
+sudo notepad.exe
+sudo explorer.exe
+```
+
+### Jalankan Perintah Tertentu
+
+```powershell
+# Buat user baru
+sudo net user admin123 /add
+
+# Lihat isi direktori
+sudo dir C:\Windows
+
+# Jalankan dengan argument
+sudo tasklist /svc
+```
+
+### Perintah Utilitas
+
+```powershell
+# Tampilkan versi
+sudo --version
+
+# Tampilkan bantuan
+sudo --help
+
+# Cek status admin
+sudo --admin
+
+# Kelola cache kredensial
+sudo --clear-cache
+sudo --list-cache
+```
+
+---
+
+## ⚙️ Konfigurasi
+
+Edit file `config/winsudo.json` untuk menyesuaikan perilaku:
 
 ```json
 {
@@ -190,88 +153,74 @@ Edit `config/winsudo.json` to customize behavior:
 }
 ```
 
-### Configuration Reference
+### Referensi Konfigurasi
 
-| Section | Key | Description | Default |
-|---------|-----|-------------|---------|
-| `auth` | `timeout_seconds` | Credential cache duration | `300` |
-| | `max_attempts` | Max password tries | `3` |
-| | `require_password` | Enable authentication | `true` |
-| `allowed_users` | - | Users who can use winsudo | `[]` (all) |
-| `allowed_commands` | - | Commands allowed to run | `[]` (all) |
-| `blocked_commands` | - | Commands blocked from running | `[]` |
-| `audit` | `enabled` | Enable logging | `true` |
-| | `log_file` | Audit log path | `logs/audit.log` |
-| `elevation` | `use_uac` | Use UAC elevation | `true` |
+| Seksi | Kunci | Deskripsi | Default |
+|-------|-------|-----------|---------|
+| `auth` | `timeout_seconds` | Durasi cache kredensial | `300` |
+| | `max_attempts` | Maksimal percobaan password | `3` |
+| | `require_password` | Aktifkan autentikasi | `true` |
+| `allowed_users` | - | Pengguna yang boleh menggunakan sudo | `[]` (semua) |
+| `allowed_commands` | - | Perintah yang diizinkan | `[]` (semua) |
+| `blocked_commands` | - | Perintah yang diblokir | `[]` |
+| `audit` | `enabled` | Aktifkan pencatatan log | `true` |
+| | `log_file` | Lokasi file log | `logs/audit.log` |
+| `elevation` | `use_uac` | Gunakan UAC untuk elevasi | `true` |
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Arsitektur
 
 ```
 winsudo/
-├── main.go                    # Entry point & CLI parsing
+├── main.go                    # Titik masuk & parsing CLI
 ├── internal/
 │   ├── auth/
-│   │   └── auth.go            # Windows LogonUser API
+│   │   └── auth.go            # API LogonUser Windows
 │   ├── audit/
-│   │   └── audit.go           # File-based logging
+│   │   └── audit.go           # Pencatatan berbasis file
 │   ├── config/
-│   │   └── config.go          # JSON config loader
+│   │   └── config.go          # Pemuat konfigurasi JSON
 │   ├── executor/
-│   │   └── executor.go        # Process creation
+│   │   └── executor.go        # Pembuatan proses
 │   └── platform/
-│       └── windows.go         # Win32 API calls
+│       └── windows.go         # Panggilan API Win32
 └── config/
-    └── winsudo.json           # Default configuration
-```
-
-### How It Works
-
-```
-┌─────────────┐    ┌──────────────┐    ┌─────────────┐
-│   User      │───▶│  Authenticate │───▶│   Execute   │
-│   Command   │    │  (Password)  │    │  (Elevated) │
-└─────────────┘    └──────────────┘    └─────────────┘
-                          │                     │
-                          ▼                     ▼
-                   ┌──────────────┐    ┌─────────────┐
-                   │  Log Event   │    │  Audit Log  │
-                   └──────────────┘    └─────────────┘
+    └── winsudo.json           # Konfigurasi default
 ```
 
 ---
 
-## 🔒 Security
+## 🔒 Keamanan
 
-- **Non-admin execution**: Run winsudo from a regular terminal for proper security
-- **Credential caching**: Passwords cached for 5 minutes (configurable)
-- **Audit trail**: All commands logged to `logs/audit.log`
-- **Command filtering**: Block dangerous commands via policy
-- **UAC integration**: Uses Windows native elevation prompts
+- **Eksekusi tanpa admin**: Jalankan sudo dari terminal biasa untuk keamanan optimal
+- **Cache kredensial**: Password disimpan selama 5 menit (dapat dikonfigurasi)
+- **Jejak audit**: Semua perintah dicatat di `logs/audit.log`
+- **Filter perintah**: Blokir perintah berbahaya melalui kebijakan
+- **Integrasi UAC**: Menggunakan prompt elevasi bawaan Windows
 
 ---
 
-## 🤝 Contributing
+## 🤝 Kontribusi
 
-Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) first.
+Kontribusi sangat diterima! Silakan baca [Panduan Kontribusi](CONTRIBUTING.md) terlebih dahulu.
 
 ```powershell
-# Fork and clone
+# Fork dan clone
 git clone https://github.com/YOUR_USERNAME/winsudo.git
 cd winsudo
 
-# Create feature branch
-git checkout -b feature/amazing-feature
+# Buat branch fitur
+git checkout -b feature/fitur-menarik
 
-# Make changes and test
-go build -o winsudo.exe .
-.\winsudo.exe --version
+# Buat perubahan dan uji
+go build -o sudo.exe .
+.\sudo.exe --version
 
-# Commit and push
+# Commit dan push
 git add .
-git commit -m "Add amazing feature"
-git push origin feature/amazing-feature
+git commit -m "Tambah fitur menarik"
+git push origin feature/fitur-menarik
 ```
 
 ---
@@ -279,25 +228,25 @@ git push origin feature/amazing-feature
 ## 📋 Changelog
 
 ### v1.0.0 (2026-09-02)
-- 🎉 Initial release
-- 🔐 Password authentication
-- 🛡️ UAC elevation
-- 📝 Audit logging
-- ⚡ Credential caching
-- 🔒 Command policy
+- 🎉 Rilis pertama
+- 🔐 Autentikasi password
+- 🛡️ Elevasi UAC
+- 📝 Pencatatan log
+- ⚡ Cache kredensial
+- 🔒 Kebijakan perintah
 
 ---
 
-## 📄 License
+## 📄 Lisensi
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Proyek ini dilisensikan di bawah Lisensi MIT - lihat file [LICENSE](LICENSE) untuk detailnya.
 
 ---
 
 <div align="center">
 
-**Made with ❤️ for the Windows community**
+Dibuat dengan ❤️ untuk komunitas Windows
 
-[⬆ Back to Top](#-winsudo)
+[⬆ Kembali ke Atas](#-winsudo)
 
 </div>

@@ -21,19 +21,19 @@ const VERSION = "1.0.0"
 var usage = `WinSudo v1.0.0 - sudo for Windows
 
 Usage:
-  winsudo <command> [args...]    Run command as administrator
-  winsudo -u <user> <command>    Run as specific user
-  winsudo --clear-cache          Clear cached credentials
-  winsudo --list-cache           List cached users
-  winsudo --version              Show version
-  winsudo --help                 Show this help
+  sudo <command> [args...]    Run command as administrator
+  sudo -u <user> <command>    Run as specific user
+  sudo --clear-cache          Clear cached credentials
+  sudo --list-cache           List cached users
+  sudo --version              Show version
+  sudo --help                 Show this help
 
 Examples:
-  winsudo cmd                    Open elevated command prompt
-  winsudo powershell             Open elevated PowerShell
-  winsudo notepad.exe            Run Notepad as admin
-  winsudo net user admin123 /add Create new user
-  winsudo "dir C:\Windows"       Run directory listing elevated
+  sudo cmd                    Open elevated command prompt
+  sudo powershell             Open elevated PowerShell
+  sudo notepad.exe            Run Notepad as admin
+  sudo net user admin123 /add Create new user
+  sudo "dir C:\Windows"       Run directory listing elevated
 
 Config: config/winsudo.json
 Logs:   logs/audit.log`
@@ -41,8 +41,8 @@ Logs:   logs/audit.log`
 func printBanner() {
 	banner := `
 ╔══════════════════════════════════════════════╗
-║           WinSudo v%s - sudo for Windows           ║
-║           Run commands with elevation             ║
+║        WinSudo v%s - sudo for Windows        ║
+║        Run commands with elevation           ║
 ╚══════════════════════════════════════════════╝`
 	fmt.Printf(banner+"\n", VERSION)
 }
