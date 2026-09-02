@@ -1,0 +1,32 @@
+{
+  "version": "1.0.0",
+  "auth": {
+    "timeout_seconds": 300,
+    "max_attempts": 3,
+    "require_password": true
+  },
+  "allowed_users": [
+    "Administrator",
+    "admin"
+  ],
+  "allowed_commands": [
+    "cmd",
+    "powershell",
+    "notepad",
+    "explorer"
+  ],
+  "blocked_commands": [
+    "format",
+    "rd /s",
+    "del /s"
+  ],
+  "audit": {
+    "enabled": true,
+    "log_file": "logs/audit.log",
+    "log_command_args": true
+  },
+  "elevation": {
+    "use_uac": true,
+    "persist_token": false
+  }
+}
