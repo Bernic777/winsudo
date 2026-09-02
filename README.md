@@ -3,7 +3,7 @@
 <img src="https://img.shields.io/badge/Windows-0078D4?style=for-the-badge&logo=windows&logoColor=white" alt="Windows"/>
 <img src="https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white" alt="Go"/>
 
-# 🛡️ WinSudo
+# WinSudo
 
 ### wsudo for Windows
 
@@ -22,13 +22,13 @@
 
 ---
 
-## 📖 Tentang
+## Tentang
 
 WinSudo adalah utilitas command-line untuk Windows yang terinspirasi dari `sudo` di Unix/Linux. Tool ini memungkinkan Anda menjalankan perintah dengan hak akses administrator menggunakan autentikasi password, pencatatan log, dan konfigurasi keamanan.
 
 ---
 
-## ⚠️ wsudo vs Windows Built-in Sudo
+## wsudo vs Windows Built-in Sudo
 
 > **Perhatian:** Windows 11 (build 2411+) sudah memiliki fitur `sudo` bawaan yang bisa diaktifkan.
 
@@ -60,20 +60,20 @@ sudo cmd
 
 ---
 
-## ✨ Fitur
+## Fitur
 
 | Fitur | Deskripsi |
 |-------|-----------|
-| 🔐 **Autentikasi Password** | Verifikasi identitas sebelum elevasi hak akses |
-| 🛡️ **Integrasi UAC** | Menggunakan mekanisme keamanan bawaan Windows |
-| 📝 **Pencatatan Log** | Mencatat setiap perintah yang dijalankan |
-| ⚡ **Cache Kredensial** | Menyimpan password sementara (5 menit) |
-| 🔒 **Kebijakan Perintah** | Whitelist/blacklist perintah tertentu |
-| 👤 **Kontrol Pengguna** | Batasi siapa yang boleh menggunakan wsudo |
+| Autentikasi Password | Verifikasi identitas sebelum elevasi hak akses |
+| Integrasi UAC | Menggunakan mekanisme keamanan bawaan Windows |
+| Pencatatan Log | Mencatat setiap perintah yang dijalankan |
+| Cache Kredensial | Menyimpan password sementara (5 menit) |
+| Kebijakan Perintah | Whitelist/blacklist perintah tertentu |
+| Kontrol Pengguna | Batasi siapa yang boleh menggunakan wsudo |
 
 ---
 
-## 📦 Instalasi
+## Instalasi
 
 ### Windows 11 (Built-in Sudo)
 
@@ -126,7 +126,7 @@ go install github.com/Bernic777/winsudo@latest
 
 ---
 
-## 🚀 Penggunaan
+## Penggunaan
 
 ### Perintah Dasar
 
@@ -174,7 +174,7 @@ wsudo --list-cache
 
 ---
 
-## ⚙️ Konfigurasi
+## Konfigurasi
 
 Edit file `config/winsudo.json` untuk menyesuaikan perilaku:
 
@@ -215,7 +215,7 @@ Edit file `config/winsudo.json` untuk menyesuaikan perilaku:
 
 ---
 
-## 🏗️ Arsitektur
+## Arsitektur
 
 ```
 winsudo/
@@ -239,7 +239,7 @@ winsudo/
 
 ---
 
-## 🔒 Keamanan
+## Keamanan
 
 - **Eksekusi tanpa admin**: Jalankan wsudo dari terminal biasa untuk keamanan optimal
 - **Cache kredensial**: Password disimpan selama 5 menit (dapat dikonfigurasi)
@@ -249,7 +249,7 @@ winsudo/
 
 ---
 
-## 🤝 Kontribusi
+## Kontribusi
 
 Kontribusi sangat diterima! Silakan baca [Panduan Kontribusi](CONTRIBUTING.md) terlebih dahulu.
 
@@ -273,7 +273,7 @@ git push origin feature/fitur-menarik
 
 ---
 
-## 📋 Changelog
+## Changelog
 
 ### v1.3.0 (2026-09-02)
 - Binary di-rename ke `wsudo.exe`
@@ -290,7 +290,7 @@ git push origin feature/fitur-menarik
 
 ---
 
-## 📄 Lisensi
+## Lisensi
 
 Proyek ini dilisensikan di bawah Lisensi MIT - lihat file [LICENSE](LICENSE) untuk detailnya.
 
